@@ -35,16 +35,15 @@ void serialEvent() {
 void processCommand(){
   if(commandAvailable){
      commandAvailable = false;
-     if (command.startsWith("light=")){
+     if (command.startsWith("pump=")){
        int start = command.indexOf('=');
        String value=command.substring(start+1);
-       int value = value.toInt();
-       if ( value == 0 ){
-         digitalWrite(light_pin, LOW);
-         Serial.println("light=LOW");
+       if ( value == "on" ){
+         digitalWrite(pumpPin, HIGH);
+         Serial.println("pump=on");
        } else {
-         digitalWrite(light_pin, HIGH);
-         Serial.println("light=HIGH");
+         digitalWrite(pumpPin, LOW);
+         Serial.println("pump=off");
        }
      }
      command = "";
