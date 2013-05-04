@@ -73,3 +73,6 @@ def loadConfig(poFileObject):
   _CONFIG = Config.load(poFileObject)
   return getConfig()
 
+def loadConfigFromFile(psFilename):
+  with open(psFilename) as loFd:
+    return loadConfig(loFd)
